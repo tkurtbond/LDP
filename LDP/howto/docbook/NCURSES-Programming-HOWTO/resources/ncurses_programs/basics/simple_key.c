@@ -27,8 +27,8 @@ int main()
 	clear();
 	noecho();
 	cbreak();	/* Line buffering disabled. pass on everything */
-	startx = (80 - WIDTH) / 2;
-	starty = (24 - HEIGHT) / 2;
+	startx = (COLS - WIDTH) / 2;
+	starty = (LINES - HEIGHT) / 2;
 		
 	menu_win = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(menu_win, TRUE);
@@ -54,7 +54,7 @@ int main()
 				choice = highlight;
 				break;
 			default:
-				mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
+				mvprintw(LINES-2, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
 				refresh();
 				break;
 		}
@@ -62,9 +62,13 @@ int main()
 		if(choice != 0)	/* User did a choice come out of the infinite loop */
 			break;
 	}	
-	mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
+	mvprintw(LINES-1, 0,
+                 "You chose choice %d with choice string \"%s\".  \
+Press a key to exit.\n",
+                 choice, choices[choice - 1]);
 	clrtoeol();
 	refresh();
+        getch();
 	endwin();
 	return 0;
 }
