@@ -24,5 +24,9 @@ ${EXE_DIR}/%: %.o
 
 all:    ${EXES}
 
+${EXES} : ${EXE_DIR}
+${EXE_DIR} :
+	mkdir -p ${EXE_DIR}
+
 clean:
 	@rm -f ${EXES}
