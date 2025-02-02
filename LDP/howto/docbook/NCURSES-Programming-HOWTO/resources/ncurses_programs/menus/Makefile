@@ -1,4 +1,4 @@
-# Makefile for JustForFun Files
+# Makefile for menus files
 
 # A few variables
 
@@ -18,15 +18,11 @@ EXES = \
 	${EXE_DIR}/menu_userptr \
 	${EXE_DIR}/menu_win
 
-${EXE_DIR}/%: %.o
+${EXE_DIR}/%: %.c | ${EXE_DIR}
 	${CC} -o $@ $< ${LIBS}
-
-%.o: ${SRC_DIR}/%.c
-	${CC} -o $@ -c $<
 
 all:    ${EXES}
 
-${EXES} : ${EXE_DIR}
 ${EXE_DIR} :
 	mkdir -p ${EXE_DIR}
 

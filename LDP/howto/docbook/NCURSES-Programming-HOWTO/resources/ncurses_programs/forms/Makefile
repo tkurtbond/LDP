@@ -1,4 +1,4 @@
-# Makefile for JustForFun Files
+# Makefile for forms files
 
 # A few variables
 
@@ -14,15 +14,11 @@ EXES = \
 	${EXE_DIR}/form_simple\
 	${EXE_DIR}/form_win \
 
-${EXE_DIR}/%: %.o
+${EXE_DIR}/%: %.c | ${EXE_DIR}
 	${CC} -o $@ $< ${LIBS}
-
-%.o: ${SRC_DIR}/%.c
-	${CC} -o $@ -c $<
 
 all:    ${EXES}
 
-${EXES} : ${EXE_DIR}
 ${EXE_DIR} :
 	mkdir -p ${EXE_DIR}
 

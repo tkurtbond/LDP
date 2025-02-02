@@ -1,4 +1,4 @@
-# Makefile for JustForFun Files
+# Makefile for JustForFun files
 
 # A few variables
 
@@ -16,11 +16,8 @@ EXES = \
 	${EXE_DIR}/shuffle \
 	${EXE_DIR}/tt
 
-${EXE_DIR}/%: %.o
+${EXE_DIR}/%: %.c | ${EXE_DIR}
 	${CC} -o $@ $< ${LIBS}
-
-%.o: ${SRC_DIR}/%.c
-	${CC} ${CFLAGS} -o $@ -c $<
 
 all:    ${EXES}
 
