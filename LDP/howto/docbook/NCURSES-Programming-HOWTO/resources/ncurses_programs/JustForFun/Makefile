@@ -21,7 +21,6 @@ ${EXE_DIR}/%: %.c | ${EXE_DIR}
 
 all:    ${EXES}
 
-${EXES} : ${EXE_DIR}
 ${EXE_DIR} :
 	mkdir -p ${EXE_DIR}
 
