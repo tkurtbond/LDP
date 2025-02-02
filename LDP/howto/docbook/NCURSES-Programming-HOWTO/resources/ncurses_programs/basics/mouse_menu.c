@@ -31,11 +31,11 @@ int main()
 	cbreak();	//Line buffering disabled. pass on everything
 
 	/* Try to put the window in the middle of screen */
-	startx = (80 - WIDTH) / 2;
-	starty = (24 - HEIGHT) / 2;
+	startx = (COLS - WIDTH) / 2;
+	starty = (LINES - HEIGHT) / 2;
 	
 	attron(A_REVERSE);
-	mvprintw(23, 1, "Click on Exit to quit (Works best in a virtual console)");
+	mvprintw(LINES - 2, 1, "Click on Exit to quit (Works best in a virtual console)");
 	refresh();
 	attroff(A_REVERSE);
 
@@ -55,7 +55,8 @@ int main()
 				{	report_choice(event.x + 1, event.y + 1, &choice);
 					if(choice == -1) //Exit chosen
 						goto end;
-					mvprintw(22, 1, "Choice made is : %d String Chosen is \"%10s\"", choice, choices[choice - 1]);
+					mvprintw(LINES - 2, 1, "Choice made is : %d String Chosen is \"%10s\"", choice, choices[choice - 1]);
+                                        clrtoeol();
 					refresh(); 
 				}
 			}
