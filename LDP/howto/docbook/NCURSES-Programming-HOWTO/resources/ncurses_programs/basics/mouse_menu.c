@@ -43,8 +43,8 @@ int main()
 	menu_win = newwin(HEIGHT, WIDTH, starty, startx);
 	print_menu(menu_win, 0);
 
-        /* This makes it work in terminal emulators, as well as on the
-           Linux console. */
+        /* This gets mouse clicks reported in menu_win, even on
+           terminal emulators, as well as on the Linux console.  */
         keypad (menu_win, TRUE);
 
 	/* Get all the mouse events */
